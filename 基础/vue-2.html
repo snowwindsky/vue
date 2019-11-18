@@ -25,6 +25,12 @@
                         msg:"<h1>haha</h1>",
                         name:"<h2>sn</h2>",
                         showOrHide:false,
+                        classShow:true,
+                        menuList:[
+                            {id:1,name:"sn"},
+                            {id:2,name:"zzl"},
+                            {id:3,name:"yas"}
+                        ]
                     }
                     
                 },
@@ -35,8 +41,19 @@
                 <p v-if="1>1">你看到我了</p>
                 <p v-else>隐藏信息</p>
                 <p v-show="showOrHide">展示或隐藏</p>
-                <p class="primary1" :class="{primary2:true}"></p>
-                </div>`
+                <p class="primary1" :class="{primary2:classShow}"></p>
+                <button @click="changeClass">class颜色变更</button>
+                <ul>
+                    <li v-for="(item,index) in menuList" :key="index">
+                    {{item.id}}.{{item.name}}
+                    </li>
+                </ul>
+                </div>`,
+                methods:{
+                    changeClass(){
+                        this.classShow=!this.classShow;
+                    }
+                }
             })
         </script>
     </body>
