@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue入门</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss">{{msg}}</div>
+        <button onclick="change()">点我啊</button>
+        <script src="../vue.js"></script>
+        <script>
+            var a=new Vue({
+                el:"#sss",
+                data:{
+                    msg:"haha",
+                },
+                template:'<div>hhhh</div>'
+            })
+            function change(){
+                console.log("dianji");
+                console.log(a.$data.msg);
+                a.$data.msg="hi";
+            }
+        </script>
+    </body>
+</html>
