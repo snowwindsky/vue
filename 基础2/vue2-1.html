@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue基础</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss">{{msg}}</div>
+        <script src="../vue.js"></script>
+        <script>
+            var app1={
+                template:
+                `
+                <div>sssT</div>
+                `
+            }
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:"haha",
+                    }
+                    
+                },
+                template:
+                `<div>
+                <input v-model="msg"/>
+                {{msg}}
+                <att>
+                </div>`,
+                components:{
+                    'att':app1
+                },
+                methods:{
+                    changeClass(){
+                        this.classShow=!this.classShow;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
