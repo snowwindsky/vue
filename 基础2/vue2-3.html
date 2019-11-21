@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>组件传值</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss">{{msg}}</div>
+        <script src="../vue.js"></script>
+        <script>
+            // 子组件==》父组件
+            // 1.先给父组件中绑定自定义的事件
+            // 2.在子组件中触发原生事件后，通过$emit调用自定义事件
+            Vue.component('Child',{
+                template:
+                `
+                <div>
+                <p>这是一个子组件</p>
+                <input :value="childData" @input="childClick"></input>
+                </div>
+                `,
+                props:['childData'],
+                methods:{
+                    childClick(val){
+                        this.$emit("childClick",val);
+                    }
+                }
+            })
+            
+            Vue.component('Parent',{
+                data(){
+                    return{
+                        msg1:"信息"
+                    }
+                },
+                template:`
+                <div>
+                <p>这是一个父组件</p>
+                <Child  :childData='msg1' @childClick='childClick'/>
+                </div>
+                `,
+                methods:{
+                    childClick(val){
+                        console.log(val);
+                    }
+                }
+            })
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:"haha",
+                    }
+                    
+                },
+                template:
+                `<div>
+                <parent/>
+                </div>`,
+            })
+        </script>
+    </body>
+</html>

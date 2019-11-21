@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>vue基础</title>
+        <title>vue组件使用</title>
         <meta charset="utf-8">
     </head>
     <body>
         <div id="sss">{{msg}}</div>
         <script src="../vue.js"></script>
         <script>
+            Vue.component('VBtn',{
+                template:`
+                <button>点我啊</button>
+                `
+            })
+            var Head={
+                template:
+                `
+                <div>我是头部</div>
+                `
+            }
+            var Foot={
+                template:
+                `
+                <div>我是底部<VBtn/></div>
+                `
+            }
+            var Content={
+                template:
+                `
+                <div>我是内容</div>
+                `
+            }
             var app1={
                 template:
                 `
-                <div>sssT</div>
-                `
+                <div>
+                <Head/>
+                <Foot/>
+                <Content/></div>
+                `,
+                components:{
+                    Head,
+                    Foot,
+                    Content,
+                }
             }
             var a=new Vue({
                 el:"#sss",
@@ -26,7 +57,7 @@
                 `<div>
                 <input v-model="msg"/>
                 {{msg}}
-                <att>
+                <att/>
                 </div>`,
                 components:{
                     'att':app1

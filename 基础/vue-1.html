@@ -5,7 +5,11 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <div id="sss">{{msg}}</div>
+        <div id="sss">
+            <div>{{msg}}</div>
+            <div>123</div>
+            <!-- 同一挂载点下应该只有一个父元素 -->
+        </div>
         <button onclick="change()">点我啊</button>
         <script src="../vue.js"></script>
         <script>
