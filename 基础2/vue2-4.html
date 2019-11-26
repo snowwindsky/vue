@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>slot插槽使用</title>
+        <meta charset="utf-8">
+        <style>
+            .primary{
+                background-color: red;
+            }
+            .success{
+                background-color: greenyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sss">{{msg}}</div>
+        <script src="../vue.js"></script>
+        <script>
+            Vue.component('VBtn',{
+                template:
+                `
+                <div>
+                    <button class="primary" :class="type">
+                        <slot >
+                            这是slot插槽
+                        </slot>
+                    </button>
+                </div>
+                `,
+                props:['type']
+            })
+            
+            Vue.component('Parent',{
+                data(){
+                    return{
+                        msg1:"信息"
+                    }
+                },
+                template:`
+                <div>
+                <p>这是一个父组件</p>
+                <VBtn type="success">hahha</VBtn>
+                <VBtn>啦啦啦</VBtn>
+                <VBtn></VBtn>
+                </div>
+                `,
+                methods:{
+                    childClick(val){
+                        console.log(val);
+                    }
+                }
+            })
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:"haha",
+                    }
+                    
+                },
+                template:
+                `<div>
+                <parent/>
+                </div>`,
+            })
+        </script>
+    </body>
+</html>
