@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>监听器</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:0,
+                        msgObj:{
+                            name:'123',
+                            age:12
+                        }
+                    }
+                    
+                },
+                template:
+                `<div>
+                <input v-model="msg"/>
+                <input v-model="msgObj.name"/>
+                <input v-model="msgObj.age"/>
+                {{msg|myMoney}}
+                </div>`
+                ,
+                filters:{
+                    myMoney(val){
+                        return "￥"+val;
+                    }
+                },
+                watch:{
+                    msg(val,oldval){
+                        if("haha"==val){
+                            console.log(val+"来了");
+                        }
+                    },
+                    //深度监听可以监听到对象的改变
+                    msgObj:{
+                        deep:true,
+                        handler(newval,oldval){
+                            console.log(newval);
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

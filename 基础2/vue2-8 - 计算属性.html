@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>计算属性</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:0,
+                        msgObj:{
+                            name:'123',
+                            age:12
+                        }
+                    }
+                    
+                },
+                template:
+                `<div>
+                <input v-model="msg"/>
+                <input v-model="msgObj.name"/>
+                <input v-model="msgObj.age"/>
+				<h1 v-html="msgO"></h1>
+               
+                </div>`
+                ,
+                computed:{
+				msgO(){
+				var aaa=this.msgObj.name+this.msgObj.age;
+				return aaa;
+				}
+				},
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>计算属性</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:0,
+                        msgObj:{
+                            name:'123',
+                            age:12
+                        }
+                    }
+                    
+                },
+                template:
+                `<div>
+               <h1>hhh</h1>
+                </div>`
+                ,
+                beforeCreate(){
+					console.log(this.msg);
+				},
+				created(){
+					console.log(document.getElementById("sss"));
+				},
+				beforeMount(){
+				console.log(document.getElementById("sss"));
+				},
+				mounted(){
+				console.log(document.getElementById("sss"));
+				},
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>计算机的通信方式</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            // 第一种通信方式为props和$emit，这种方式非常常见，这里不赘述
+            // 此处使用的是$attrs和$listeners
+            // b->c->d
+            // 注意，其中若props出现了对应属性，则$attrs中的内容会对应删除
+            Vue.component('D',{
+                template: '<div><div @click="getData">{{$attrs.messagec}}</div></div>',
+                methods:{
+                    getData(){
+                        this.$emit("getData",'我是D的数据')
+                    }
+                }
+            })
+            Vue.component('C',{
+                template: '<div><D v-bind="$attrs" v-on="$listeners"></D></div>',
+            })
+            Vue.component("B",{
+                template:'<div><C v-bind="$attrs" v-on="$listeners"></C></div>'//通过$attrs进行绑定，传递给下一个子元素
+            })
+            var a=new Vue({
+                el:"#sss",
+                data(){
+                    return{
+                        msg:0,
+                        myMsg:"hello world"
+                    }
+                    
+                },
+                template:
+                `<div>
+                {{msg}}
+                <B :messagec='myMsg' @getData="getData"></B>
+                </div>`
+                ,
+                methods:{
+                    getData(val){
+                        console.log(val)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

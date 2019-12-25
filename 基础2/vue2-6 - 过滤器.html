@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>过滤器</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            // 1.声明过滤器
+            //2.{{val|过滤方法}}
+            var a=new Vue({
+                el:"#sss",
+                data:function(){
+                    return{
+                        msg:0,
+                    }
+                    
+                },
+                template:
+                `<div>
+                <input v-model="msg"></input>
+                {{msg|myMoney}}
+                </div>`
+                ,
+                filters:{
+                    myMoney(val){
+                        return "￥"+val;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
