@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>中央事件</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            //通过中央事件总线可以实现兄弟之间的通信
+            //需要先定义一个新的vue
+            //对其进行事件绑定操作
+            var bus = new Vue()
+            Vue.component('brother1',{
+                data(){
+                    return{
+                        myMsg:"hello",
+                        brotherMsg:'',
+                    }
+                },
+                template:'<div>111<p>{{brotherMsg}}</p></div>',
+                mounted(){
+                    bus.$on("globalEvent1",function(val){
+                        this.brotherMsg = val
+                        console.log("the value is "+val)
+                    })
+                }
+            })
+            Vue.component("brother2",{
+                template:'<div><p>hhh</p><input v-model="msg" @change="getData(msg)"/></div>',
+                data(){
+                    return{
+                        msg:'hello,Brother1',
+                    }
+                },
+                methods:{
+                    getData(val){
+                        bus.$emit('globalEvent1',val)
+                    }
+                }
+            })
+            var a=new Vue({
+                el:"#sss",
+                data(){
+                    return{
+                        msg:0,
+                        myMsg:"hello world"
+                    }
+                    
+                },
+                template:
+                `<div>
+                <brother2></brother2>
+                <brother1></brother1>
+                </div>`
+                ,
+            })
+        </script>
+    </body>
+</html>

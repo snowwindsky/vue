@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>provide和inject</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            //通过provide和inject进行绑定
+            //父组件中提供provide,子组件通过inject来注入变量，
+            //不论子组件有多深，只要调用了inject方法既可以获得provide中的数据
+            Vue.component('Child',{
+                data(){
+                    return{
+                        brotherMsg:'',
+                    }
+                },
+                inject:['data1'],
+                template:'<div>:{{data1}}</div>',
+            })
+            Vue.component("Parent",{
+                template:'<div><Child/><p>这是父组件</p></div>',
+            })
+            var a=new Vue({
+                el:"#sss",
+                data(){
+                    return{
+                        msg:0,
+                        myMsg:"hello world"
+                    }
+                    
+                },
+                template:
+                `<div>
+                    <Parent/>
+                </div>`
+                ,
+                provide:{
+                    data1:'HELLO'
+                }
+            })
+        </script>
+    </body>
+</html>
