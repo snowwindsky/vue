@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue操作dom元素</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="sss"></div>
+        <script src="../vue.js"></script>
+        <script>
+            //通过ref可以获取dom元素，
+            //若ref在被调用的组件中使用，则为被调用的子组件
+            var my = {
+                template:'<button>hhh</button>',
+            }
+            var app = new Vue({
+                el:"#sss",
+                template:'<div><p ref="p1" @click="getRefs">1</p><my ref="btn1" /></div>',
+                components:{
+                    my,
+                },
+                methods:{
+                    getRefs(){
+                        console.log(this.$refs.p1)
+                        console.log(this.$refs.btn1)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
