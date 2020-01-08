@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>vue操作dom元素</title>
+        <title>获取更新后的dom</title>
         <meta charset="utf-8">
     </head>
     <body>
@@ -9,7 +9,21 @@
         <script src="../vue.js"></script>
         <script>
             var my = {
-                template:'<button>hhh</button>',
+                template:'<input type="text" v-show="isShow" ref="input">',
+                data(){
+                    return{
+                        isShow:false,
+                    }
+                },
+                mounted(){
+                    this.isShow = true
+                    console.log(this.$refs.input)
+                    //$nextTick()是在DOM更新循环结束之后执行回调函数
+                    //在修改数据之后调用此方法可以在回调中获得更新之后的DOM
+                    this.$nextTick(function(){
+                        this.$refs.input.focus()
+                    })
+                }
             }
             var app = new Vue({
                 el:"#sss",
