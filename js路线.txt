@@ -25,7 +25,19 @@ js{
                 indexOf,
                 substring,
             }
-        }
+        },
+        数组{
+            indexOf,
+            slice,
+            push&pop,
+            shift&unshift,
+            sort,
+            reverse,
+            splice,
+            concat,
+            join,
+            
+        },
     },
     函数{
 
