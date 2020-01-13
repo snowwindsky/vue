@@ -1,0 +1,33 @@
+js{
+    快速入门{
+        基本语法{
+            语法,
+            注释,
+        },
+        数据类型和变量{
+            Number,
+            String,
+            bool,
+            比较运算符,
+            null和undefined,
+            数组,
+            对象,
+            变量,
+            strict模式
+        },
+        字符串{
+            多行字符串,
+            模板字符串,
+            操作字符串,
+            {
+                toUpperCase,
+                toLowerCase,
+                indexOf,
+                substring,
+            }
+        }
+    },
+    函数{
+
+    },
+}
