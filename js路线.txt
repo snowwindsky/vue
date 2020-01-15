@@ -30,13 +30,18 @@ js{
             indexOf,
             slice,
             push&pop,
-            shift&unshift,
+            unshift&shift,
             sort,
             reverse,
             splice,
             concat,
             join,
-            
+            多维数组,
+        },
+        对象{
+            对象声明方式,
+            访问属性,
+            in&hasOwnProperty()
         },
     },
     函数{
