@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='../vue.js'></script>
+        <script src='../3RouterUse/node_modules/vue-router/dist/vue-router.js'></script>
+    </head>
+    <body>
+        <div id="ss"></div>
+        <script>
+            //当使用路由参数时，例如从/timeline/frontedn到/timeline/backend，
+            //原来的组件实例会被复用，因为两个路由都渲染同个组件，比起销毁再创建，
+            //复用显得更加高效，但这也导致组件的生命周期钩子不会再被调用
+            var Div1={
+                data(){
+                    return{
+                        msg:''
+                    }
+                },
+                template:'<div>这是我记得{{msg}}</div>',
+                created(){
+                    console.log(this.$route.params.id)
+                    this.msg=this.$route.params.id
+                },
+                //在当前组件内部监听路由变化
+                watch:{
+                    '$route'(to,from){
+                        //发送ajax请求
+                        this.msg=to.params.id
+                    }
+                }
+            }
+            var Cmp1={
+                template:`
+                <div>
+                <router-link :to="{name:'cmpDesc',params:{id:'frontend'}}">前端</router-link>
+                <router-link :to="{name:'cmpDesc',params:{id:'backend'}}">后端</router-link>
+                <router-view></router-view>
+                </div>
+                `
+            }
+            var Ccmp={
+                template:'<div>首页2</div>'
+            }
+            var App={
+                template:`
+                <div>
+                <router-link to='/cmp'>页面1</router-link>
+                <router-link to='ccmp'>页面2</router-link>
+                <router-view></router-view>
+                </div>
+                `
+            }
+            var router=new VueRouter({
+                routes:[
+                    {
+                        path:'/cmp',
+                        component:Cmp1,
+                        children:[
+                            {
+                                name:'cmpDesc',
+                                path:':id',
+                                component:Div1,
+                            },
+                        ]
+                    },
+                    {
+                        path:'/ccmp',
+                        component:Ccmp,
+                    }
+                ]
+            })
+            new Vue({
+                el:'#ss',
+                data(){
+                    return{
+                    }
+                },
+                router,
+                template:`<App/>`,
+                components:{
+                    App
+                }
+            })
+        </script>
+    </body>
+</html>
+

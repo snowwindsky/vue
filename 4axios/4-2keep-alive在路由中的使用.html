@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='../vue.js'></script>
+        <script src='../3RouterUse/node_modules/vue-router/dist/vue-router.js'></script>
+    </head>
+    <body>
+        <div id="ss"></div>
+        <script>
+            var Cmp1={
+                template:`
+                <div>
+                我是首页欸
+                </div>
+                `,
+                created(){
+                    console.log("首页被创建了")
+                },
+                mounted(){
+                    console.log("首页被挂载了")
+                },
+                destroyed(){
+                    console.log("首页被销毁了")
+                }
+            }
+            var Ccmp={
+                template:'<div>我是沸点欸</div>',
+                created(){
+                    console.log("沸点被创建了")
+                },
+                mounted(){
+                    console.log("沸点被挂载了")
+                },
+                destroyed(){
+                    console.log("沸点被销毁了")
+                }
+            }
+            var App={
+                template:`
+                <div>
+                <router-link to='/cmp'>页面1</router-link>
+                <router-link to='ccmp'>页面2</router-link>
+                <router-view></router-view>
+                </div>
+                `
+            }
+            var router=new VueRouter({
+                routes:[
+                    {
+                        path:'/cmp',
+                        component:Cmp1,
+                    },
+                    {
+                        path:'/ccmp',
+                        component:Ccmp,
+                    }
+                ]
+            })
+            new Vue({
+                el:'#ss',
+                data(){
+                    return{
+                    }
+                },
+                router,
+                template:`<App/>`,
+                components:{
+                    App
+                }
+            })
+        </script>
+    </body>
+</html>
+

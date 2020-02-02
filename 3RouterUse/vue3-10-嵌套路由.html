@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>嵌套路由</title>
+        <meta charset="utf-8">
+        <!-- 1.引入vue模块 -->
+        <script src="../vue.js"></script>
+        <!-- 2.引入vue-router模块 -->
+        <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    </head>
+    <body>
+        <div id="sss"></div>
+        
+        <script>
+            var Movie={
+                template:'<div>我是电影欸</div>'
+            }
+            var Music={
+                template:'<div>我可是音乐</div>'
+            }
+            var Home={
+                template:`
+                    <div>
+                    我是主页
+                    <router-link to='/home/movie'>电影</router-link>
+                    <router-link to='/home/music'>音乐</router-link>
+                    <router-view></router-view>
+                    </div>
+                `,
+            }
+            //3.让vue使用该vueRouter创建
+            //Vue.use(VueRouter)
+            //4.创建router对象
+            var router = new VueRouter({
+                //5.配置路由对象
+                routes:[
+                    //路由匹配的规则
+                    {
+                        //动态路由参数，以：开头
+                        path:'/home',
+                        component:Home,
+                        children:[
+                            {
+                                path:'movie',
+                                component:Movie,
+                            },
+                            {
+                                path:'music',
+                                component:Music
+                            }
+                        ]
+                    },
+                ]
+            })
+            
+            //router-link==>a to==>href
+            //router-view==>路由匹配组件的出口
+            var App={
+                template:`
+                    <div>
+                    <p>
+                        <router-link to="home">首页</router-link>
+                    </p>
+                        <router-view></router-view>
+                    </div>`
+            }
+            new Vue({
+                el:'#sss',
+                template:'<App/>',
+                //6.交给vue实例化对象管理
+                router,
+                components:{
+                    App,
+                },
+            })
+        </script>
+    </body>
+</html>

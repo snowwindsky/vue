@@ -17,8 +17,8 @@
                         brotherMsg:'',
                     }
                 },
-                inject:['data1'],
-                template:'<div>:{{data1}}</div>',
+                inject:['data1','data2'],
+                template:'<div>{{data1}}:{{data2}}</div>',
             })
             Vue.component("Parent",{
                 template:'<div><Child/><p>这是父组件</p></div>',
@@ -28,7 +28,8 @@
                 data(){
                     return{
                         msg:0,
-                        myMsg:"hello world"
+                        myMsg:"hello world",
+                        data2:"he"
                     }
                     
                 },
@@ -37,8 +38,12 @@
                     <Parent/>
                 </div>`
                 ,
-                provide:{
-                    data1:'HELLO'
+                provide(){
+                    return{
+                        data1:'HELLO',
+                        data2:this.data2
+                    }
+                    
                 }
             })
         </script>
