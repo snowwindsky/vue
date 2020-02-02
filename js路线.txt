@@ -43,8 +43,39 @@ js{
             访问属性,
             in&hasOwnProperty()
         },
+        条件判断{
+            普通判断,
+            多行条件判断,
+        },
+        循环{
+            for循环,
+            for...in循环,
+            while寻欢,
+            do...while循环
+        },
+        Map和Set{
+            Map{
+                set,
+                get,
+                has,
+                delete
+            },
+            Set{
+                add,
+                delete
+            },
+        },
+        iterable{
+            for...in,
+            for...of,
+            forEach,
+        }
     },
     函数{
-
+        函数定义和调用{
+            函数定义的两种方式,
+            调用函数,
+            arguments,
+        }
     },
 }
