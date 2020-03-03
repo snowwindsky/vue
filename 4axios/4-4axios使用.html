@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='../vue.js'></script>
+        <script src='../node_modules/vue-router/dist/vue-router.js'></script>
+        <script src='../node_modules/axios/dist/axios.js'></script>
+    </head>
+    <body>
+        <div id="ss">
+        </div>
+        <script>
+            var App={
+                template:`
+                <div>
+                <button @click='getC'>发送请求</button>
+                </div>
+                `
+            }
+            Vue.prototype.$axios=axios
+            new Vue({
+                    el:'#ss',
+                    data(){
+                        return{
+                        }
+                    },
+                    components:{
+                        App
+                    },
+                    template:`<App/>`,
+                    
+                })
+        </script>
+    </body>
+</html>
+
