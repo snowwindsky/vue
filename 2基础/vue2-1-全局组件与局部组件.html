@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>vue组件使用</title>
+        <title>全局组件与局部组件</title>
         <meta charset="utf-8">
     </head>
     <body>
@@ -10,7 +10,7 @@
         <script>
             Vue.component('VBtn',{
                 template:`
-                <button>点我啊</button>
+                <button>我是一个按钮，但没啥用</button>
                 `
             })
             var Head={
@@ -35,9 +35,10 @@
                 template:
                 `
                 <div>
-                <Head/>
-                <Foot/>
-                <Content/></div>
+                    <Head/>
+                    <Foot/>
+                    <Content/>
+                </div>
                 `,
                 components:{
                     Head,
@@ -62,11 +63,6 @@
                 components:{
                     'att':app1
                 },
-                methods:{
-                    changeClass(){
-                        this.classShow=!this.classShow;
-                    }
-                }
             })
         </script>
     </body>

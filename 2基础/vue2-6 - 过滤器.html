@@ -10,6 +10,9 @@
         <script>
             // 1.声明过滤器
             //2.{{val|过滤方法}}
+            Vue.filter("dollars",function(val){
+                return "$"+val
+            })
             var a=new Vue({
                 el:"#sss",
                 data:function(){
@@ -22,6 +25,7 @@
                 `<div>
                 <input v-model="msg"></input>
                 {{msg|myMoney}}
+                {{msg|dollars}}
                 </div>`
                 ,
                 filters:{

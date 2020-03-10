@@ -13,28 +13,24 @@
                 el:"#sss",
                 data:function(){
                     return{
-                        msg:0,
                         msgObj:{
                             name:'123',
                             age:12
                         }
-                    }
-                    
+                    } 
                 },
                 template:
                 `<div>
-                <input v-model="msg"/>
-                <input v-model="msgObj.name"/>
-                <input v-model="msgObj.age"/>
-				<h1 v-html="msgO"></h1>
-               
+                    <input v-model="msgObj.name"/>
+                    <input v-model="msgObj.age"/>
+                    <h1 v-html="msgO"></h1>
                 </div>`
                 ,
                 computed:{
-				msgO(){
-				var aaa=this.msgObj.name+this.msgObj.age;
-				return aaa;
-				}
+                    msgO(){
+                        var aaa=this.msgObj.name+this.msgObj.age;
+                        return aaa;
+                    }
 				},
             })
         </script>

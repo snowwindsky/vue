@@ -5,36 +5,31 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <div id="sss">{{msg}}</div>
+        <div id="sss"></div>
         <script src="../vue.js"></script>
         <script>
             Vue.component('btt',{
                 template:`
                 <div>
-                <li>
-                第一个坑
-                <slot name="one"></slot>
-                第二个
-                <slot name="two"></slot>
-                </li>
+                    <li>
+                        第一个坑
+                        <slot name="one"></slot>
+                        第二个
+                        <slot name="two"></slot>
+                    </li>
                 </div>
                 `
             })
             var a=new Vue({
                 el:"#sss",
-                data:function(){
-                    return{
-                        msg:"haha",
-                    }
-                    
-                },
                 template:
                 `<div>
-                <ul>
-                <btt>
-                <h2 slot="one">1111</h2>
-                <h3 slot="two">22222</h3>
-                </btt></ul>
+                    <ul>
+                        <btt>
+                            <h2 slot="two">1111</h2>
+                            <h3 slot="one">22222</h3>
+                        </btt>
+                    </ul>
                 </div>`,
             })
         </script>

@@ -8,7 +8,6 @@
         <div id="sss"></div>
         <script src="../vue.js"></script>
         <script>
-            
             var a=new Vue({
                 el:"#sss",
                 data:function(){
@@ -18,22 +17,14 @@
                             name:'123',
                             age:12
                         }
-                    }
-                    
+                    }  
                 },
                 template:
                 `<div>
-                <input v-model="msg"/>
-                <input v-model="msgObj.name"/>
-                <input v-model="msgObj.age"/>
-                {{msg|myMoney}}
-                </div>`
-                ,
-                filters:{
-                    myMoney(val){
-                        return "￥"+val;
-                    }
-                },
+                    <input v-model="msg"/>
+                    <input v-model="msgObj.name"/>
+                    <input v-model="msgObj.age"/>
+                </div>`,
                 watch:{
                     msg(val,oldval){
                         if("haha"==val){
