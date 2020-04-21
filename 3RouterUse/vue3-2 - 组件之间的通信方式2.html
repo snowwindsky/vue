@@ -21,7 +21,7 @@
                 },
                 template:'<div>111<p>{{brotherMsg}}</p></div>',
                 mounted(){
-                    bus.$on("globalEvent1",function(val){
+                    bus.$on("globalEvent1",function(val){    
                         this.brotherMsg = val
                         console.log("the value is "+val)
                     })
@@ -42,17 +42,10 @@
             })
             var a=new Vue({
                 el:"#sss",
-                data(){
-                    return{
-                        msg:0,
-                        myMsg:"hello world"
-                    }
-                    
-                },
                 template:
                 `<div>
-                <brother2></brother2>
-                <brother1></brother1>
+                    <brother2></brother2>
+                    <brother1></brother1>
                 </div>`
                 ,
             })

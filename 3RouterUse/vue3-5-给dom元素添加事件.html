@@ -27,16 +27,10 @@
             }
             var app = new Vue({
                 el:"#sss",
-                template:'<div><p ref="p1" @click="getRefs">1</p><my ref="btn1" /></div>',
+                template:'<div><my ref="btn1" /></div>',
                 components:{
                     my,
                 },
-                methods:{
-                    getRefs(){
-                        console.log(this.$refs.p1)
-                        console.log(this.$refs.btn1)
-                    }
-                }
             })
         </script>
     </body>
